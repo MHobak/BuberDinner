@@ -1,0 +1,13 @@
+@host=http://localhost:5270
+
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+    "firstName": "Miguel",
+    "lastName": "Hobak",
+    "email": "miguel@hobak.com",
+    "password": "Miguel123!"
+}
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4NDlkMGI4OS0yYzgyLTRlMjgtODI5ZS0yOWUwOGQ4OTE0MjciLCJnaXZlbl9uYW1lIjoiTWlndWVsIiwiZmFtaWx5X25hbWUiOiJIb2JhayIsImp0aSI6IjdkNWYzN2Q0LWFhOTgtNDM5ZS1hZjBlLTNlZjExZjU1OWRmNyIsImV4cCI6MTY3OTYyOTI4OSwiaXNzIjoiQnViZXJEaW5uZXIiLCJhdWQiOiJCdWJlckRpbm5lciJ9.6VQ59dxxMmfpgG6lR9wN86cvSFaD8EkiODicSyL0sE8
