@@ -36,13 +36,10 @@ namespace BuberDinner.Application.Services.Authentication
 
             //3. Create JST token
 
-            var token = _jwtTokenGenerator.GenerateToken(user.Id, firstName, lastName);
+            var token = _jwtTokenGenerator.GenerateToken(user);
 
             return new AuthenticationResult(
-                user.Id,
-                firstName,
-                lastName,
-                email,
+                user,
                 token
             );
         }
@@ -62,13 +59,10 @@ namespace BuberDinner.Application.Services.Authentication
             }
 
             //3. Create JWT token
-            var token = _jwtTokenGenerator.GenerateToken(user.Id, user.FirstName, user.LastName);
+            var token = _jwtTokenGenerator.GenerateToken(user);
 
             return new AuthenticationResult(
-                user.Id,
-                user.FirstName,
-                user.LastName,
-                user.Email,
+                user,
                 token
             );
         }
