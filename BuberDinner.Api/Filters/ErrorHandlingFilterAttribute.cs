@@ -1,3 +1,4 @@
+using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -10,10 +11,15 @@ namespace BuberDinner.Api.Filters
         {
             var exception = context.Exception;
 
-            context.Result = new ObjectResult(new { error = "An error occurred while processing your request"})
+            var problemDatails = new ProblemDetails //RFC 7807 standard for apis
             {
-                StatusCode = 500
+                Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1", //standardized url for details of the problem and status code
+                Title = "An error occurred while processing your request",
+                Status = (int)HttpStatusCode.InternalServerError,
+
             };
+
+            context.Result = new ObjectResult(problemDatails);
 
             context.ExceptionHandled = true;
         }
