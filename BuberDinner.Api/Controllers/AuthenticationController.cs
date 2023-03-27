@@ -27,15 +27,10 @@ namespace BuberDinner.Api.Controllers
                 request.Email,
                 request.Password);
 
-            if (registerResult.IsT1)
-            {
-                var authResponse = registerResult.AsT0;
-                AuthenticationResponse response = MapAuthResult(authResponse);
-
-                return Ok(response);
-            }
-
-            return Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exist.");
+            return registerResult.Match(
+                authResult => Ok(MapAuthResult(authResult)),
+                _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exist.")
+            );
         }
 
         private static AuthenticationResponse MapAuthResult(AuthenticationResult authResponse)
