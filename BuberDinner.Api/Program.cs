@@ -16,13 +16,13 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddControllers();
     //Override the default 
-    builder.Services.AddSingleton<ProblemDetailsFactory, BuberDinnerProblemDetailsFactory>();
+    //builder.Services.AddSingleton<ProblemDetailsFactory, BuberDinnerProblemDetailsFactory>();
 }
 
 var app = builder.Build();
 {
     //app.UseMiddleware<ErrorHandlingMiddleware>();
-    app.UseExceptionHandler("/errors"); //Middleware that re-executes the request to the error path
+    app.UseExceptionHandler("/error"); //Middleware that re-executes the request to the error path
 
     //Minimal api approach to global error handling
     app.Map("/error", (HttpContext httpContext) =>
