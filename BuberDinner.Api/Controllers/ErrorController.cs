@@ -14,7 +14,7 @@ namespace BuberDinner.Api.Controllers
             var (statusCode, message) = exception switch
             {
                 //Status409Conflict is for security risk
-                DuplicateEmailException => (StatusCodes.Status409Conflict, "Email already exist."),
+                IServiceException serviceException => ((int)serviceException.StatusCode, serviceException.ErrorMessage),
                 _ => (StatusCodes.Status500InternalServerError, "An unexpected error ocurred.")
             };
             
