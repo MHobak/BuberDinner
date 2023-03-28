@@ -1,12 +1,13 @@
-using System.Net;
-using BuberDinner.Application.Common.Errors;
+using FluentResults;
 
 namespace BuberDinner.Application.Errors
 {
-    public record struct DuplicateEmailError : IError
+    public class DuplicateEmailError : IError
     {
-        public HttpStatusCode StatusCode => HttpStatusCode.BadRequest;
+        public List<IError> Reasons => throw new NotImplementedException();
 
-        public string ErrorMessage => "Email already exist.";
+        public string Message => throw new NotImplementedException();
+
+        public Dictionary<string, object> Metadata => throw new NotImplementedException();
     }
 }
