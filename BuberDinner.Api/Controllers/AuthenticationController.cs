@@ -22,7 +22,7 @@ namespace BuberDinner.Api.Controllers
         [HttpPost("register")]
         public IActionResult Register(RegisterRequest request)
         {
-            OneOf<AuthenticationResult, IError> registerResult = _authenticationService.Register(
+            var registerResult = _authenticationService.Register(
                 request.FirstName,
                 request.LastName,
                 request.Email,
